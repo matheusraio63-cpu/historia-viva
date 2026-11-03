@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="História Viva — mentoria e aprendizagem em História para estudantes do Ensino Fundamental.">
   <meta name="theme-color" content="#172b46">
-  <title>História Viva | Conhecer o passado, compreender o presente</title>
+  <title>História Viva | Conhecimento, reflexão e cultura</title>
+  <link rel="icon" type="image/png" href="logo-historia-viva.png">
   <style>
     :root {
       --navy: #172b46;
@@ -33,7 +34,7 @@
     header { position: sticky; top: 0; z-index: 10; background: rgba(255,253,248,.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
     .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
-    .brand-mark { width: 43px; height: 43px; border: 2px solid var(--gold); display: grid; place-items: center; border-radius: 50%; color: var(--gold); font-size: 22px; }
+    .brand img { width: 57px; height: 57px; object-fit: contain; } .brand-mark { width: 43px; height: 43px; border: 2px solid var(--gold); display: grid; place-items: center; border-radius: 50%; color: var(--gold); font-size: 22px; }
     .brand-name { font-size: 21px; font-weight: bold; letter-spacing: .08em; line-height: 1.1; }
     .brand-sub { display: block; font: 9px Arial, sans-serif; letter-spacing: .19em; margin-top: 5px; color: var(--muted); }
     .nav-links { display: flex; align-items: center; gap: 25px; }
@@ -117,12 +118,12 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#inicio" aria-label="História Viva — início">
-        <span class="brand-mark">HV</span>
+        <img src="logo-historia-viva.png" alt="Símbolo da História Viva" style="width:57px;height:57px;object-fit:contain;border-radius:50%;">
         <span><span class="brand-name">HISTÓRIA VIVA</span><span class="brand-sub">CONHECIMENTO · REFLEXÃO · CULTURA</span></span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks">
-        <a href="#inicio">Início</a><a href="#sobre">O projeto</a><a href="#aulas">Aulas</a><a href="#metodologia">Metodologia</a><a href="#contato" class="nav-cta">Entre em contato</a>
+        <a href="#inicio">Início</a><a href="#sobre">O projeto</a><a href="#aulas">Mentorias</a><a href="#biblioteca">Biblioteca</a><a href="#metodologia">Metodologia</a><a href="#contato" class="nav-cta">Entre em contato</a>
       </nav>
     </div>
   </header>
@@ -195,6 +196,19 @@
       </div>
     </section>
 
+    <section id="biblioteca" style="background:#fffdf8">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow" style="color:#98743c">Espaço de aprendizagem</div>
+          <h2>Biblioteca histórica</h2>
+          <p>Uma área para reunir textos, roteiros de estudo e materiais didáticos. Novos conteúdos serão publicados gradualmente.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="card-icon">⌛</div><h3>Como estudar História?</h3><p>Uma introdução ao tempo histórico, às fontes e à investigação do passado.</p></article>
+          <article class="card"><div class="card-icon">⚖</div><h3>Fontes históricas</h3><p>Conheça diferentes vestígios utilizados pelos historiadores para construir interpretações.</p></article>
+          <article class="card"><div class="card-icon">◈</div><h3>Causas e consequências</h3><p>Aprenda a relacionar acontecimentos e processos sem reduzir a História a datas isoladas.</p></article>
+        </div>
+      </div>
+    </section>
     <section class="method" id="metodologia">
       <div class="container">
         <div class="section-head">
