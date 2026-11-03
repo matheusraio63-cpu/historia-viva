@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="História Viva — mentoria e aprendizagem em História para estudantes do Ensino Fundamental.">
+  <meta name="theme-color" content="#172b46">
+  <title>História Viva | Conhecer o passado, compreender o presente</title>
+  <style>
+    :root {
+      --navy: #172b46;
+      --navy-2: #213b5d;
+      --gold: #c5a56b;
+      --gold-light: #e5d2aa;
+      --ivory: #f6f1e7;
+      --paper: #fffdf8;
+      --ink: #263342;
+      --muted: #657080;
+      --line: #e7dfd1;
+      --shadow: 0 18px 50px rgba(23, 43, 70, .12);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); background: var(--paper);
+      font-family: Georgia, "Times New Roman", serif; line-height: 1.65;
+    }
+    p, li, a, button, input, textarea { font-family: Arial, Helvetica, sans-serif; }
+    a { color: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar { background: var(--navy); color: #f7f0e2; font: 12px Arial, sans-serif; letter-spacing: .12em; text-align: center; padding: 9px 16px; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,253,248,.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
+    .brand-mark { width: 43px; height: 43px; border: 2px solid var(--gold); display: grid; place-items: center; border-radius: 50%; color: var(--gold); font-size: 22px; }
+    .brand-name { font-size: 21px; font-weight: bold; letter-spacing: .08em; line-height: 1.1; }
+    .brand-sub { display: block; font: 9px Arial, sans-serif; letter-spacing: .19em; margin-top: 5px; color: var(--muted); }
+    .nav-links { display: flex; align-items: center; gap: 25px; }
+    .nav-links a { text-decoration: none; font-size: 13px; color: #344154; }
+    .nav-links a:hover { color: #98743c; }
+    .nav-cta, .button { display: inline-flex; justify-content: center; align-items: center; border: 0; border-radius: 7px; padding: 13px 19px; background: var(--gold); color: #172b46; font: 700 13px Arial, sans-serif; text-decoration: none; cursor: pointer; transition: .2s; }
+    .nav-cta:hover, .button:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 7px; padding: 9px 12px; background: white; color: var(--navy); font-size: 20px; }
+    .hero { background: linear-gradient(115deg, rgba(15,31,52,.97), rgba(23,43,70,.86)), url("https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=2000&q=85") center/cover; color: white; padding: 105px 0 100px; }
+    .hero-content { max-width: 720px; }
+    .eyebrow { color: var(--gold-light); font: 700 11px Arial, sans-serif; letter-spacing: .2em; text-transform: uppercase; }
+    h1, h2, h3 { color: var(--navy); line-height: 1.18; }
+    h1 { color: #fff8eb; font-size: clamp(39px, 6vw, 68px); font-weight: 500; margin: 18px 0; }
+    .hero p { color: #e9e5dd; font-size: 17px; max-width: 610px; margin: 0 0 28px; }
+    .hero .button { padding: 15px 23px; }
+    .hero-note { display: inline-block; margin-left: 16px; color: #d9dce1; font: 12px Arial, sans-serif; }
+    section { padding: 82px 0; }
+    .section-head { max-width: 690px; margin: 0 auto 42px; text-align: center; }
+    .section-head .eyebrow { color: #98743c; }
+    h2 { font-size: clamp(30px, 4vw, 42px); font-weight: 500; margin: 12px 0 15px; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .intro-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 55px; align-items: center; }
+    .intro-copy h2 { margin-top: 10px; }
+    .intro-copy p { color: #596575; }
+    .image-panel { min-height: 370px; border-radius: var(--radius); background: linear-gradient(0deg, rgba(23,43,70,.12), rgba(23,43,70,.02)), url("https://images.unsplash.com/photo-1455390582262-044c6536a5a7?auto=format&fit=crop&w=1100&q=85") center/cover; box-shadow: var(--shadow); position: relative; }
+    .image-caption { position: absolute; bottom: 18px; left: 18px; background: rgba(255,253,248,.94); color: var(--navy); padding: 12px 16px; border-left: 3px solid var(--gold); font: 12px Arial, sans-serif; }
+    .values { background: var(--ivory); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 27px; box-shadow: 0 8px 24px rgba(23,43,70,.04); }
+    .card-icon { color: #a17b40; font-size: 25px; }
+    .card h3 { font-size: 21px; margin: 12px 0 9px; font-weight: 500; }
+    .card p { color: var(--muted); font-size: 14px; margin: 0; }
+    .classes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .class-card { border-radius: var(--radius); padding: 30px; background: var(--navy); color: white; }
+    .class-card.light { background: #f1e8d8; color: var(--ink); }
+    .class-card h3 { color: inherit; font-size: 24px; font-weight: 500; }
+    .class-card p, .class-card li { color: inherit; opacity: .86; font-size: 14px; }
+    .class-card ul { padding-left: 19px; }
+    .method { background: var(--ivory); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; counter-reset: step; }
+    .step { border-top: 2px solid var(--gold); padding: 20px 15px 0 0; }
+    .step-number { color: #a17b40; font: 700 12px Arial, sans-serif; letter-spacing: .12em; }
+    .step h3 { font-size: 19px; font-weight: 500; margin: 9px 0; }
+    .step p { font-size: 13px; color: var(--muted); }
+    .quote { background: var(--navy); color: #f7f0e2; text-align: center; padding: 66px 20px; }
+    .quote blockquote { max-width: 800px; margin: 0 auto; font-size: clamp(23px, 3vw, 34px); line-height: 1.4; }
+    .quote span { display: block; margin-top: 18px; color: var(--gold-light); font: 11px Arial, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 45px; align-items: start; }
+    .contact-box { background: var(--ivory); padding: 28px; border-radius: var(--radius); }
+    .contact-box p { color: var(--muted); font-size: 14px; }
+    .contact-form label { display: block; font: 700 12px Arial, sans-serif; color: #455164; margin: 0 0 7px; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 13px 14px; margin-bottom: 16px; border: 1px solid #dcd5c9; border-radius: 7px; background: white; font-size: 14px; }
+    .contact-form textarea { min-height: 115px; resize: vertical; }
+    .form-note { font: 12px Arial, sans-serif; color: var(--muted); }
+    footer { background: #101f33; color: #e9e5dd; padding: 35px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    footer p { margin: 0; font: 12px Arial, sans-serif; color: #c1c8d1; }
+    footer a { color: var(--gold-light); text-decoration: none; font: 12px Arial, sans-serif; }
+    @media (max-width: 800px) {
+      .nav-links { display: none; position: absolute; top: 78px; left: 0; right: 0; padding: 20px; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 17px; }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .nav-cta { text-align: center; }
+      .intro-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .cards { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 30px, 1120px); }
+      .hero { padding: 78px 0 75px; }
+      .hero-note { display: block; margin: 15px 0 0; }
+      section { padding: 62px 0; }
+      .classes-grid, .steps { grid-template-columns: 1fr; }
+      .image-panel { min-height: 270px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">MENTORIA EDUCACIONAL EM HISTÓRIA · ENSINO FUNDAMENTAL</div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="História Viva — início">
+        <span class="brand-mark">HV</span>
+        <span><span class="brand-name">HISTÓRIA VIVA</span><span class="brand-sub">CONHECIMENTO · REFLEXÃO · CULTURA</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Início</a><a href="#sobre">O projeto</a><a href="#aulas">Aulas</a><a href="#metodologia">Metodologia</a><a href="#contato" class="nav-cta">Entre em contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Educação histórica</div>
+          <h1>A História ganha vida quando é compreendida.</h1>
+          <p>Aprenda a investigar o passado, compreender as transformações da sociedade e desenvolver um olhar crítico sobre o mundo.</p>
+          <a class="button" href="#aulas">Conheça as aulas</a>
+          <span class="hero-note">Aprendizagem com contexto, diálogo e reflexão.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container intro-grid">
+        <div class="intro-copy">
+          <div class="eyebrow">Sobre o projeto</div>
+          <h2>Mais do que memorizar datas: compreender processos históricos.</h2>
+          <p>A História Viva é um projeto educacional dedicado ao ensino e à valorização do conhecimento histórico. Nossa proposta é tornar o estudo da História mais claro, interessante e significativo.</p>
+          <p>Por meio de aulas e mentorias, buscamos estimular a curiosidade, a análise de fontes, o pensamento crítico e a compreensão das relações entre passado e presente.</p>
+          <p>O projeto é voltado a estudantes do Ensino Fundamental e busca respeitar o ritmo e as necessidades de aprendizagem de cada aluno.</p>
+        </div>
+        <div class="image-panel" role="img" aria-label="Mesa de estudos com livros e materiais de escrita">
+          <div class="image-caption">Investigar o passado para compreender o presente.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="values">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nossa identidade</div>
+          <h2>O que orienta a História Viva</h2>
+          <p>Um projeto de aprendizagem fundamentado no conhecimento, na responsabilidade e no respeito à História.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="card-icon">✦</div><h3>Missão</h3><p>Promover o conhecimento histórico por meio de uma educação acessível, estimulando investigação, reflexão e pensamento crítico.</p></article>
+          <article class="card"><div class="card-icon">⌖</div><h3>Visão</h3><p>Ampliar o acesso à aprendizagem histórica e construir uma referência educacional reconhecida pela seriedade e dedicação.</p></article>
+          <article class="card"><div class="card-icon">❖</div><h3>Valores</h3><p>Rigor histórico, compromisso educacional, curiosidade intelectual, diálogo e valorização da cultura e do patrimônio.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="aulas">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Aulas e mentorias</div>
+          <h2>Aprendizagem que acompanha o estudante</h2>
+          <p>Formatos flexíveis para diferentes necessidades e objetivos de aprendizagem.</p>
+        </div>
+        <div class="classes-grid">
+          <article class="class-card">
+            <div class="eyebrow">Acompanhamento personalizado</div>
+            <h3>Mentoria individual</h3>
+            <p>Encontros direcionados às dúvidas, aos conteúdos escolares e ao ritmo de aprendizagem do estudante.</p>
+            <ul><li>Explicações adaptadas às necessidades do aluno</li><li>Revisão e aprofundamento de conteúdos</li><li>Atividades de fixação e reflexão</li></ul>
+          </article>
+          <article class="class-card light">
+            <div class="eyebrow">Aprendizagem compartilhada</div>
+            <h3>Mentoria em grupo</h3>
+            <p>Encontros que incentivam o diálogo, a troca de ideias e a construção coletiva do conhecimento.</p>
+            <ul><li>Discussões orientadas</li><li>Atividades e exercícios históricos</li><li>Aprendizagem colaborativa</li></ul>
+          </article>
+        </div>
+        <p style="text-align:center;color:#657080;font:13px Arial,sans-serif;margin-top:22px">As aulas poderão ser organizadas em modalidade presencial ou online, conforme disponibilidade e combinação prévia.</p>
+      </div>
+    </section>
+
+    <section class="method" id="metodologia">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nossa metodologia</div>
+          <h2>Quatro etapas para aprender História</h2>
+          <p>O estudo parte do contexto e avança até a análise e a aplicação do conhecimento.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><div class="step-number">ETAPA 01</div><h3>Contextualizar</h3><p>Conhecer o período, o espaço e as circunstâncias em que os acontecimentos ocorreram.</p></article>
+          <article class="step"><div class="step-number">ETAPA 02</div><h3>Compreender</h3><p>Relacionar acontecimentos, personagens, causas, consequências e transformações.</p></article>
+          <article class="step"><div class="step-number">ETAPA 03</div><h3>Investigar</h3><p>Analisar mapas, imagens, documentos e outras fontes históricas adequadas ao conteúdo.</p></article>
+          <article class="step"><div class="step-number">ETAPA 04</div><h3>Consolidar</h3><p>Retomar o conteúdo por meio de exercícios, atividades e avaliações formativas.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="quote">
+      <blockquote>“A História não é apenas aquilo que aconteceu: é também o esforço de compreender por que aconteceu.”</blockquote>
+      <span>História Viva · Aprender para compreender</span>
+    </div>
+
+    <section id="contato">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Contato</div>
+          <h2>Vamos conversar sobre aprendizagem?</h2>
+          <p>Entre em contato para saber mais sobre as mentorias, formatos de aula e disponibilidade.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Conheça a História Viva</h3>
+            <p>Se você é estudante ou responsável e deseja conhecer melhor o projeto, envie uma mensagem. Será um prazer apresentar a proposta educacional.</p>
+            <p><strong>Atendimento:</strong> mediante agendamento.</p>
+            <p><strong>Modalidades:</strong> presencial e online, conforme disponibilidade.</p>
+            <p><strong>Público:</strong> estudantes do Ensino Fundamental.</p>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <label for="name">Seu nome</label>
+            <input id="name" name="name" type="text" placeholder="Como podemos chamar você?" required>
+            <label for="email">E-mail para contato</label>
+            <input id="email" name="email" type="email" placeholder="voce@exemplo.com" required>
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Conte brevemente o que gostaria de saber." required></textarea>
+            <button class="button" type="submit">Preparar mensagem</button>
+            <p class="form-note" id="formNote">Antes de publicar, configure o endereço de e-mail de recebimento no código. O formulário ainda não envia dados automaticamente.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><strong style="letter-spacing:.12em">HISTÓRIA VIVA</strong><p>Conhecer o passado. Compreender o presente.</p></div>
+      <p>© <span id="year"></span> História Viva. Todos os direitos reservados.</p>
+      <a href="#inicio">Voltar ao início ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.textContent = open ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // CONFIGURAÇÃO: substitua pelo e-mail oficial que receberá as mensagens.
+    const CONTACT_EMAIL = 'COLOQUE_SEU_EMAIL_AQUI';
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      if (CONTACT_EMAIL === 'COLOQUE_SEU_EMAIL_AQUI') {
+        document.getElementById('formNote').textContent =
+          'O formulário está montado, mas ainda precisa do e-mail de recebimento. Procure CONTACT_EMAIL no final do arquivo e coloque seu endereço.';
+        return;
+      }
+      const data = new FormData(event.target);
+      const subject = encodeURIComponent('Contato pelo site História Viva');
+      const body = encodeURIComponent(
+        'Nome: ' + data.get('name') + '\\nE-mail: ' + data.get('email') +
+        '\\n\\nMensagem:\\n' + data.get('message')
+      );
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
